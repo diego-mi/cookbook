@@ -176,6 +176,164 @@ class User extends \Cookbook\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+
+        return parent::setId($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+
+        return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUsername()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', array());
+
+        return parent::getUsername();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUsername($username)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', array($username));
+
+        return parent::setUsername($username);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEmail()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+
+        return parent::getEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmail($email)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+
+        return parent::setEmail($email);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPassword()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
+
+        return parent::getPassword();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword($password)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
+
+        return parent::setPassword($password);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPicture()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPicture', array());
+
+        return parent::getPicture();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPicture($picture)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPicture', array($picture));
+
+        return parent::setPicture($picture);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSalt()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', array());
+
+        return parent::getSalt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSalt($salt)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSalt', array($salt));
+
+        return parent::setSalt($salt);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function toArray()
     {
 

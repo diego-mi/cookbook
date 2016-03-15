@@ -45,4 +45,84 @@ class Categoria extends AbstractEntity
      * })
      */
     private $tipo;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Categoria
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param string $descricao
+     *
+     * @return Categoria
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataCriacao()
+    {
+        return $this->dataCriacao;
+    }
+
+    /**
+     * @param \DateTime $dataCriacao
+     *
+     * @return Categoria
+     */
+    public function setDataCriacao($dataCriacao)
+    {
+        $this->dataCriacao = $dataCriacao;
+
+        return $this;
+    }
+
+    /**
+     * @return Tipo
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param Tipo $tipo
+     *
+     * @return Categoria
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
 }

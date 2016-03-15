@@ -62,4 +62,124 @@ class Post extends AbstractEntity
      * })
      */
     private $subcategoria;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Post
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param string $descricao
+     *
+     * @return Post
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getConteudo()
+    {
+        return $this->conteudo;
+    }
+
+    /**
+     * @param string $conteudo
+     *
+     * @return Post
+     */
+    public function setConteudo($conteudo)
+    {
+        $this->conteudo = $conteudo;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataCriacao()
+    {
+        return $this->dataCriacao;
+    }
+
+    /**
+     * @param \DateTime $dataCriacao
+     *
+     * @return Post
+     */
+    public function setDataCriacao($dataCriacao)
+    {
+        $this->dataCriacao = $dataCriacao;
+
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Post
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Subcategoria
+     */
+    public function getSubcategoria()
+    {
+        return $this->subcategoria;
+    }
+
+    /**
+     * @param Subcategoria $subcategoria
+     *
+     * @return Post
+     */
+    public function setSubcategoria($subcategoria)
+    {
+        $this->subcategoria = $subcategoria;
+
+        return $this;
+    }
 }

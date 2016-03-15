@@ -176,6 +176,98 @@ class Subcategoria extends \Cookbook\Entity\Subcategoria implements \Doctrine\OR
     /**
      * {@inheritDoc}
      */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+
+        return parent::setId($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescricao()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescricao', array());
+
+        return parent::getDescricao();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescricao($descricao)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescricao', array($descricao));
+
+        return parent::setDescricao($descricao);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDataCriacao()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDataCriacao', array());
+
+        return parent::getDataCriacao();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDataCriacao($dataCriacao)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDataCriacao', array($dataCriacao));
+
+        return parent::setDataCriacao($dataCriacao);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCategoria()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoria', array());
+
+        return parent::getCategoria();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCategoria($categoria)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoria', array($categoria));
+
+        return parent::setCategoria($categoria);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function toArray()
     {
 

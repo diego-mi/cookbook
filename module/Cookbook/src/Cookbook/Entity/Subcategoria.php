@@ -45,4 +45,84 @@ class Subcategoria extends AbstractEntity
      * })
      */
     private $categoria;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Subcategoria
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param string $descricao
+     *
+     * @return Subcategoria
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataCriacao()
+    {
+        return $this->dataCriacao;
+    }
+
+    /**
+     * @param \DateTime $dataCriacao
+     *
+     * @return Subcategoria
+     */
+    public function setDataCriacao($dataCriacao)
+    {
+        $this->dataCriacao = $dataCriacao;
+
+        return $this;
+    }
+
+    /**
+     * @return Categoria
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * @param Categoria $categoria
+     *
+     * @return Subcategoria
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
 }
