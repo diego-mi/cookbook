@@ -1,0 +1,81 @@
+<!-- begin Breadcrumb-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2><?php echo($this->arrPost->getDescricaoCategoria()); ?></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<?php echo $this->url('cookbook', array('action' => 'tipo', 'id' => $this->arrBreadcrumb['idTipo'])); ?>">
+                    <?php echo($this->arrBreadcrumb['descricaoTipo']); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('cookbook', array('action' => 'categoria', 'id' => $this->arrBreadcrumb['idCategoria'])); ?>">
+                    <?php echo($this->arrBreadcrumb['descricaoCategoria']); ?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('cookbook', array('action' => 'subcategoria', 'id' => $this->arrBreadcrumb['idSubcategoria'])); ?>">
+                    <?php echo($this->arrBreadcrumb['descricaoSubcategoria']); ?>
+                </a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<!-- begin Breadcrumb-->
+
+<!-- begin pagina-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <!-- begin content -->
+        <div class="ibox-content col-lg-12">
+
+            <!-- begin header post-->
+            <div class="m-b-md">
+                <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
+                <h2><?php echo($this->arrPost->getDescricaoCategoria()) ?></h2>
+            </div>
+            <!-- end pagina-->
+        </div>
+    </div>
+    <!-- end content -->
+
+    <div class="row">
+        <!-- begin ibox content -->
+        <div class="ibox">
+            <div class="ibox-content">
+                <a href="article.html" class="btn-link">
+                    <h2>
+                        <?php echo($this->arrPost->getDescricao()) ?>
+                    </h2>
+                </a>
+                <div class="small m-b-xs">
+                    <strong><?php echo($this->arrPost->getNomeUser()) ?></strong> <span class="text-muted"><i
+                            class="fa fa-clock-o"></i> <?php echo($this->arrPost->getDataCriacao()); ?></span>
+                </div>
+                <p>
+                    <?php echo($this->arrPost->getConteudo()) ?>
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Tags:</h5>
+                        <button class="btn btn-primary btn-xs" type="button">Model</button>
+                        <button class="btn btn-white btn-xs" type="button">Publishing</button>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="small text-right">
+                            <h5>Stats:</h5>
+                            <div><i class="fa fa-comments-o"> </i> 56 comments</div>
+                            <i class="fa fa-eye"> </i> 144 views
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- eng ibox content -->
+    </div>
+
+</div>
+<!-- end pagina-->

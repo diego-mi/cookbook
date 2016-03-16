@@ -15,10 +15,13 @@
         'href' => $this->basePath() . '/img/favicon.ico'
     ))
         ->prependStylesheet($this->basePath() . '/css/main.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/dataTables/dataTables.tableTools.min.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/dataTables/dataTables.responsive.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/dataTables/dataTables.bootstrap.css')
         ->prependStylesheet($this->basePath() . '/css/style.css')
         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
         ->prependStylesheet($this->basePath() . '/css/awesome-bootstrap-checkbox.css')
-        ->prependStylesheet($this->basePath() . '/font-awesome/css/font-awesome.css') ?>
+        ->prependStylesheet($this->basePath() . '/font-awesome/css/font-awesome.css'); ?>
 
 </head>
 
@@ -57,11 +60,56 @@
                         IN+
                     </div>
                 </li>
-                <li class="active">
-                    <a href="<?php echo $this->url('cookbook'); ?>">
-                        <i class="fa fa-th-large"></i> <span class="nav-label">Home</span>
-                    </a>
-                </li>
+
+                <?php
+                //var_dump($this->arrMenu);die;
+                foreach ($this->arrMenu as $menu) {
+                    ?>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sitemap"></i> <span
+                                class="nav-label"><?php echo($menu['infos']['descricao']) ?> </span><span
+                                class="fa arrow"></span>
+                        </a>
+                        <?php
+                        if (count($menu['arrCategoria'])) {
+                            ?>
+                            <ul class="nav nav-second-level collapse"> <?php
+                                foreach ($menu['arrCategoria'] as $categoria) {
+                                    ?>
+                                    <li>
+                                        <a href="#"><?php echo($categoria['infos']['descricao']) ?> <span
+                                                class="fa arrow"></span></a>
+                                        <?php
+                                        if (count($categoria['arrSubcategoria'])) {
+                                            ?>
+                                            <ul class="nav nav-third-level collapse"> <?php
+                                                foreach ($categoria['arrSubcategoria'] as $subcategoria) {
+                                                    ?>
+                                                    <li>
+                                                        <a href="#"><?php echo($subcategoria['infos']['descricao']) ?></a>
+                                                    </li>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                            <?php
+                                        }
+                                        ?>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                            <?php
+                        }
+                        ?>
+                    </li>
+                    <?php
+                }
+
+                ?>
+
             </ul>
 
         </div>
@@ -89,13 +137,14 @@
                     <!-- begin menu notifications -->
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info notifications-dropdown" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope"></i> <span class="label label-warning notifications-label">0</span>
+                            <i class="fa fa-envelope"></i> <span
+                                class="label label-warning notifications-label">0</span>
                         </a>
                         <ul class="dropdown-menu dropdown-messages notifications-layout">
                         </ul>
                     </li>
                     <!-- end menu notifications -->
-                    
+
                     <li>
                         <a class="right-sidebar-toggle">
                             <i class="fa fa-tasks"></i>
@@ -380,7 +429,8 @@
 
                             <div class="switch">
                                 <div class="onoffswitch">
-                                    <input type="checkbox" checked="true" name="collapsemenu" class="onoffswitch-checkbox checked"
+                                    <input type="checkbox" checked="true" name="collapsemenu"
+                                           class="onoffswitch-checkbox checked"
                                            id="example">
                                     <label class="onoffswitch-label" for="example">
                                         <span class="onoffswitch-inner"></span>
@@ -399,7 +449,8 @@
 
                             <div class="switch">
                                 <div class="onoffswitch">
-                                    <input type="checkbox" checked="true" name="collapsemenu" class="onoffswitch-checkbox checked"
+                                    <input type="checkbox" checked="true" name="collapsemenu"
+                                           class="onoffswitch-checkbox checked"
                                            id="example">
                                     <label class="onoffswitch-label" for="example">
                                         <span class="onoffswitch-inner"></span>

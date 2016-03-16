@@ -81,7 +81,7 @@ class Tipo extends AbstractEntity
      */
     public function getDataCriacao()
     {
-        return $this->dataCriacao;
+        return $this->dataCriacao->format('d/m/Y h:i:s');
     }
 
     /**

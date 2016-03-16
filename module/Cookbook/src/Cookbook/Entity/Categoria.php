@@ -125,4 +125,5 @@ class Categoria extends AbstractEntity
 
         return $this;
     }
+
 }

@@ -1,15 +1,12 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
-
 namespace Cookbook;
 
+use Cookbook\Service\Categoria;
 use Cookbook\Service\Cookbook;
+use Cookbook\Service\Subcategoria;
+use Cookbook\Service\Tipo;
+use Cookbook\Service\VwPost;
+use Cookbook\Service\ServiceLocatorFactory;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -17,8 +14,16 @@ class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
+        ServiceLocatorFactory::setInstance($e->getApplication()->getServiceManager());
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
+
+        #codigo para dados dinamicos para o layout
+        $myServiceManager = $e->getApplication()->getServiceManager();
+        $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
+        $myService = $myServiceManager->get('Cookbook\Service\Tipo');
+        $viewModel->arrMenu = $myService->getMenu();
+
         $moduleRouteListener->attach($eventManager);
     }
 
@@ -44,6 +49,18 @@ class Module
             'factories' => array(
                 'Cookbook\Service\Cookbook' => function ($em) {
                     return new Cookbook($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\VwPost' => function ($em) {
+                    return new VwPost($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\Tipo' => function ($em) {
+                    return new Tipo($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\Categoria' => function ($em) {
+                    return new Categoria($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\Subcategoria' => function ($em) {
+                    return new Subcategoria($em->get('Doctrine\ORM\EntityManager'));
                 }
             )
         );

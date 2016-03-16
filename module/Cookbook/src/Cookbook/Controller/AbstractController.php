@@ -1,7 +1,9 @@
 <?php
 namespace Cookbook\Controller;
 
+use Doctrine\DBAL\Schema\View;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 /**
  * Class AbstractController
@@ -19,5 +21,13 @@ abstract class AbstractController extends AbstractActionController
     public function getService($strServiceNamespace = null)
     {
         return $this->getServiceLocator()->get($strServiceNamespace);
+    }
+
+    /**
+     * Action responsavel por mostrar a pagina de 'ops'
+     */
+    public function opsAction()
+    {
+        return new ViewModel();
     }
 }
