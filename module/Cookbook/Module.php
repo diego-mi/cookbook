@@ -5,6 +5,7 @@ use Cookbook\Service\Categoria;
 use Cookbook\Service\Cookbook;
 use Cookbook\Service\Subcategoria;
 use Cookbook\Service\Tipo;
+use Cookbook\Service\VwTipo;
 use Cookbook\Service\VwPost;
 use Cookbook\Service\ServiceLocatorFactory;
 use Zend\Mvc\ModuleRouteListener;
@@ -55,6 +56,9 @@ class Module
                 },
                 'Cookbook\Service\Tipo' => function ($em) {
                     return new Tipo($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\VwTipo' => function ($em) {
+                    return new VwTipo($em->get('Doctrine\ORM\EntityManager'));
                 },
                 'Cookbook\Service\Categoria' => function ($em) {
                     return new Categoria($em->get('Doctrine\ORM\EntityManager'));

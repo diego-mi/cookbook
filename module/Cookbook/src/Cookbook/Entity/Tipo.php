@@ -34,7 +34,7 @@ class Tipo extends AbstractEntity
      *
      * @ORM\Column(name="data_criacao", type="datetime", nullable=false)
      */
-    private $dataCriacao = 'CURRENT_TIMESTAMP';
+    private $dataCriacao;
 
     /**
      * @return int
@@ -81,6 +81,10 @@ class Tipo extends AbstractEntity
      */
     public function getDataCriacao()
     {
+        if (is_string($this->dataCriacao)) {
+            return $this->dataCriacao;
+        }
+
         return $this->dataCriacao->format('d/m/Y h:i:s');
     }
 

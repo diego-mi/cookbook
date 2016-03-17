@@ -34,7 +34,7 @@ class Categoria extends AbstractEntity
      *
      * @ORM\Column(name="data_criacao", type="datetime", nullable=false)
      */
-    private $dataCriacao = 'CURRENT_TIMESTAMP';
+    private $dataCriacao;
 
     /**
      * @var Tipo
@@ -91,7 +91,11 @@ class Categoria extends AbstractEntity
      */
     public function getDataCriacao()
     {
-        return $this->dataCriacao;
+        if (is_string($this->dataCriacao)) {
+            return $this->dataCriacao;
+        }
+
+        return $this->dataCriacao->format('d/m/Y h:i:s');
     }
 
     /**

@@ -1,0 +1,11 @@
+CREATE VIEW vwTipo AS
+select
+	tipo.id as id_tipo,
+	tipo.descricao as descricao_tipo,
+	tipo.data_criacao as data_criacao_tipo,
+	COUNT(categoria.id) as quantidade_categoria
+from tipo
+left join categoria
+	on categoria.tipo_id = tipo.id
+group by
+    tipo.id

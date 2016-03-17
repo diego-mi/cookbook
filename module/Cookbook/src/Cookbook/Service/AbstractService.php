@@ -3,6 +3,7 @@ namespace Cookbook\Service;
 
 use Doctrine\ORM\EntityManager;
 use Zend\Di\ServiceLocator;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 abstract class AbstractService
 {
@@ -58,5 +59,56 @@ abstract class AbstractService
     public function find($intId)
     {
         return $this->getRepository()->find($intId);
+    }
+
+    /**
+     * @param array $data
+     * @return bool|\Doctrine\Common\Proxy\Proxy|\Exception|null|object
+     */
+    public function save(Array $data = array())
+    {
+        try {
+            if ((isset($data['id'])) && ($data['id'] != '')) {
+                $entity = $this->em->getReference($this->strEntityName, $data['id']);
+
+                $hydrator = new ClassMethods();
+                $hydrator->hydrate($data, $entity);
+
+            } else {
+                $entity = new $this->strEntityName($data);
+            }
+
+            $this->em->persist($entity);
+            $this->em->flush();
+
+            if ($entity->getId()) {
+                return true;
+            }
+
+            return false;
+        } catch (\Doctrine\DBAL\ConnectionException $objError) {
+            var_dump($objError);
+            return $objError;
+        }
+    }
+
+    public function deletar(Array $data = array())
+    {
+        try {
+            $entity = $this->getRepository()->findOneBy($data);
+
+            if ($entity) {
+                $this->em->remove($entity);
+                $this->em->flush();
+
+                return $entity;
+            } else {
+                throw new \RuntimeException(
+                    'Não foi encontrado registro para remover.'
+                );
+            }
+        } catch (\Exception $objError) {
+            return $objError;
+        }
     }
 }

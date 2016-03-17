@@ -1,11 +1,10 @@
 <?php
-
 namespace Cookbook\Controller;
 
 use Zend\View\Model\ViewModel;
 use Cookbook\Message\Message;
 
-class TipoController extends AbstractController
+class CategoriaController extends AbstractController
 {
     use Message;
 
@@ -14,11 +13,11 @@ class TipoController extends AbstractController
      */
     public function __construct()
     {
-        $this->strControllerName = 'tipo';
+        $this->strControllerName = 'categoria';
         $this->strRoute = 'criar';
-        $this->strServiceNamespace = 'Cookbook\Service\Tipo';
-        $this->strEntityNamespace = 'Cookbook\Entity\Tipo';
-        $this->strFormNamespace = 'Cookbook\Form\Tipo';
+        $this->strServiceNamespace = 'Cookbook\Service\Categoria';
+        $this->strEntityNamespace = 'Cookbook\Entity\Categoria';
+        $this->strFormNamespace = 'Cookbook\Form\Categoria';
     }
 
     /**
@@ -35,7 +34,7 @@ class TipoController extends AbstractController
 
     public function visualizarAction()
     {
-        $service = $this->getService('Cookbook\Service\VwTipo');
+        $service = $this->getService('Cookbook\Service\VwCategoria');
         $intIdFromRoute = $this->params()->fromRoute('id', 0);
         $entity = $service->find($intIdFromRoute);
 
@@ -43,7 +42,7 @@ class TipoController extends AbstractController
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
 
-        $arrEntityChilds = $this->getService('Cookbook\Service\Categoria')->findBy(['tipo' => $intIdFromRoute]);
+        $arrEntityChilds = $this->getService('Cookbook\Service\Subcategoria')->findBy(['categoria' => $intIdFromRoute]);
 
         return new ViewModel(compact('entity', 'intIdFromRoute', 'arrEntityChilds'));
     }
