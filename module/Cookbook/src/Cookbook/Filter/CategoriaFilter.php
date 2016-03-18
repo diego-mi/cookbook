@@ -4,11 +4,9 @@ namespace Cookbook\Filter;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
 use Zend\InputFilter\Input;
-use Zend\InputFilter\InputFilter;
 use Zend\Validator\InArray;
-use Zend\Validator\NotEmpty;
 
-class CategoriaFilter extends InputFilter
+class CategoriaFilter extends AbstractFilter
 {
     protected $arrTipo;
 
@@ -26,22 +24,5 @@ class CategoriaFilter extends InputFilter
             ->attach(new StringTrim());
         $tipo->getValidatorChain()->attach($inArray);
         $this->add($tipo);
-    }
-
-    /**
-     * @param array $haystack
-     *
-     * @return array
-     */
-    public function haystack(Array $haystack = array())
-    {
-        $array = [];
-        foreach ($haystack as $value) {
-            if ($value) {
-                $array[$value['value']] = $value['label'];
-            }
-        }
-
-        return array_keys($array);
     }
 }

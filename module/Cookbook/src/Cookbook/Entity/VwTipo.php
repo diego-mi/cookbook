@@ -59,11 +59,11 @@ class VwTipo extends AbstractEntity
     }
 
     /**
-     * @param int $id
+     * @param int $idTipo
      *
-     * @return Tipo
+     * @return VwTipo
      */
-    public function setId($idTipo)
+    public function setIdTipo($idTipo)
     {
         $this->idTipo = $idTipo;
 
@@ -79,11 +79,11 @@ class VwTipo extends AbstractEntity
     }
 
     /**
-     * @param string $nome
+     * @param string $nomeTipo
      *
-     * @return Tipo
+     * @return VwTipo
      */
-    public function setNome($nomeTipo)
+    public function setNomeTipo($nomeTipo)
     {
         $this->nomeTipo = $nomeTipo;
 
@@ -101,9 +101,9 @@ class VwTipo extends AbstractEntity
     /**
      * @param string $descricaoTipo
      *
-     * @return Tipo
+     * @return VwTipo
      */
-    public function setDescricao($descricaoTipo)
+    public function setDescricaoTipo($descricaoTipo)
     {
         $this->descricaoTipo = $descricaoTipo;
 
@@ -123,11 +123,11 @@ class VwTipo extends AbstractEntity
     }
 
     /**
-     * @param \DateTime $dataCriacao
+     * @param \DateTime $dataCriacaoTipo
      *
-     * @return Tipo
+     * @return VwTipo
      */
-    public function setDataCriacao($dataCriacaoTipo)
+    public function setDataCriacaoTipo($dataCriacaoTipo)
     {
         $this->dataCriacaoTipo = $dataCriacaoTipo;
 
@@ -144,7 +144,7 @@ class VwTipo extends AbstractEntity
 
     /**
      * @param int $qtCategoria
-     * @return Tipo
+     * @return VwTipo
      */
     public function setQtCategoria($qtCategoria)
     {

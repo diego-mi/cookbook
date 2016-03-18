@@ -1,17 +1,24 @@
 <?php
 namespace Cookbook;
 
-use Cookbook\Service\Categoria;
-use Cookbook\Form\Categoria as CategoriaForm;
-use Cookbook\Service\Cookbook;
-use Cookbook\Service\Subcategoria;
-use Cookbook\Service\Tipo;
-use Cookbook\Form\Tipo as TipoForm;
-use Cookbook\Service\VwTipo;
-use Cookbook\Service\VwPost;
+use Cookbook\Service\Gerador;
+use Cookbook\Form\Gerador as GeradorForm;
+use Cookbook\Service\Post;
 use Cookbook\Service\ServiceLocatorFactory;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Cookbook\Service\Categoria;
+use Cookbook\Service\VwCategoria;
+use Cookbook\Form\Categoria as CategoriaForm;
+use Cookbook\Service\Cookbook;
+use Cookbook\Service\Subcategoria;
+use Cookbook\Service\VwSubcategoria;
+use Cookbook\Form\Subcategoria as SubcategoriaForm;
+use Cookbook\Service\Tipo;
+use Cookbook\Service\VwTipo;
+use Cookbook\Form\Tipo as TipoForm;
+use Cookbook\Service\VwPost;
+use Cookbook\Form\Post as PostForm;
 
 class Module
 {
@@ -56,11 +63,23 @@ class Module
                 'Cookbook\Service\VwPost' => function ($em) {
                     return new VwPost($em->get('Doctrine\ORM\EntityManager'));
                 },
+                'Cookbook\Service\Post' => function ($em) {
+                    return new Post($em->get('Doctrine\ORM\EntityManager'));
+                },
                 'Cookbook\Service\Tipo' => function ($em) {
                     return new Tipo($em->get('Doctrine\ORM\EntityManager'));
                 },
                 'Cookbook\Service\VwTipo' => function ($em) {
                     return new VwTipo($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\VwCategoria' => function ($em) {
+                    return new VwCategoria($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\Gerador' => function ($em) {
+                    return new Gerador($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Service\VwSubcategoria' => function ($em) {
+                    return new VwSubcategoria($em->get('Doctrine\ORM\EntityManager'));
                 },
                 'Cookbook\Service\Categoria' => function ($em) {
                     return new Categoria($em->get('Doctrine\ORM\EntityManager'));
@@ -73,6 +92,15 @@ class Module
                 },
                 'Cookbook\Form\Tipo' => function ($em) {
                     return new TipoForm($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Form\Subcategoria' => function ($em) {
+                    return new SubcategoriaForm($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Form\Post' => function ($em) {
+                    return new PostForm($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Form\Gerador' => function ($em) {
+                    return new GeradorForm($em->get('Doctrine\ORM\EntityManager'));
                 }
             )
         );

@@ -64,10 +64,10 @@ class User extends \Cookbook\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'picture', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'salt');
+            return array('__isInitialized__', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'picture');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'picture', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'salt');
+        return array('__isInitialized__', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Cookbook\\Entity\\User' . "\0" . 'picture');
     }
 
     /**
@@ -307,28 +307,6 @@ class User extends \Cookbook\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPicture', array($picture));
 
         return parent::setPicture($picture);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSalt()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', array());
-
-        return parent::getSalt();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setSalt($salt)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSalt', array($salt));
-
-        return parent::setSalt($salt);
     }
 
     /**

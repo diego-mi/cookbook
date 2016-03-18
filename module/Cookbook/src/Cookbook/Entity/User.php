@@ -58,13 +58,6 @@ class User extends AbstractEntity
     private $picture;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
-     */
-    private $salt;
-
-    /**
      * @return int
      */
     public function getId()
@@ -180,26 +173,6 @@ class User extends AbstractEntity
     public function setPicture($picture)
     {
         $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    /**
-     * @param string $salt
-     *
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
 
         return $this;
     }

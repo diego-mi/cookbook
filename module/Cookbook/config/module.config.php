@@ -44,13 +44,30 @@ return [
                     ],
                 ]
             ],
+            'gerador' => [
+                'type' => 'segment',
+                'options' => [
+                    'route' => '/gerador/[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults' => [
+                        'controller' => 'Cookbook\Controller\Gerador',
+                        'action' => 'index',
+                    ],
+                ]
+            ],
         ],
     ],
     'controllers' => [
         'invokables' => [
             'Cookbook\Controller\Index' => Controller\IndexController::class,
             'Cookbook\Controller\Tipo' => Controller\TipoController::class,
-            'Cookbook\Controller\Categoria' => Controller\CategoriaController::class
+            'Cookbook\Controller\Categoria' => Controller\CategoriaController::class,
+            'Cookbook\Controller\Subcategoria' => Controller\SubcategoriaController::class,
+            'Cookbook\Controller\Post' => Controller\PostController::class,
+            'Cookbook\Controller\Gerador' => Controller\GeradorController::class
         ],
     ],
     'view_manager' => [

@@ -1,27 +1,5 @@
 <!-- begin Breadcrumb-->
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2><?php echo($this->arrBreadcrumb['nomeSubcategoria']); ?></h2>
-        <ol class="breadcrumb">
-            <li>
-                <a href="<?php echo $this->url('cookbook', array('action' => 'tipo', 'id' => $this->arrBreadcrumb['idTipo'])); ?>">
-                    <?php echo($this->arrBreadcrumb['nomeTipo']); ?>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo $this->url('cookbook', array('action' => 'categoria', 'id' => $this->arrBreadcrumb['idCategoria'])); ?>">
-                    <?php echo($this->arrBreadcrumb['nomeCategoria']); ?>
-                </a>
-            </li>
-            <li class="active">
-                Listando tudo de <strong><?php echo($this->arrBreadcrumb['nomeSubcategoria']); ?></strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-lg-2">
-
-    </div>
-</div>
+<?php echo($this->partial('cookbook/index/breadcrumb-partial', ['arrBreadcrumb' => $arrBreadcrumb])); ?>
 <!-- begin Breadcrumb-->
 
 <!-- begin pagina-->
@@ -32,56 +10,34 @@
 
             <!-- begin header post-->
             <div class="m-b-md">
-                <a href="<?php echo $this->url('criar', array('controller' => 'subcategoria', 'action' => 'visualizar', 'id' => $arrPosts[0]->getIdSubcategoria())); ?>" class="btn btn-white btn-xs pull-right">Visualizar Subcategoria</a>
-                <h2><?php echo($arrPosts[0]->getNomeCategoria()) ?></h2>
-            </div>
-            <!-- end pagina-->
-        </div>
-    </div>
-    <!-- end content -->
+                <a href="<?php echo $this->url('criar', array('controller' => 'subcategoria', 'action' => 'visualizar', 'id' => $arrPosts[0]->getIdSubcategoria())); ?>"
+                   class="btn btn-white btn-xs pull-right">Visualizar Subcategoria</a>
+                <h1><?php echo($arrPosts[0]->getNomeSubcategoria()) ?> <small>Subcategoria</small></h1>
 
-    <div class="row">
-        <?php
-        foreach ($arrPosts as $arrPost) {
-            ?>
-
-            <!-- begin ibox content -->
-            <div class="ibox">
-                <div class="ibox-content">
-                    <a href="article.html" class="btn-link">
-                        <h2>
-                            <?php echo($arrPost->getTituloPost()) ?>
-                        </h2>
-                    </a>
-                    <div class="small m-b-xs">
-                        <strong><?php echo($arrPosts[0]->getNomeUser()) ?></strong> <span class="text-muted"><i class="fa fa-clock-o"></i> <?php echo($arrPost->getDataCriacaoPost()); ?></span>
-                    </div>
-                    <p>
-                        <?php echo($arrPost->getConteudoPost()) ?>
-                    </p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>Tags:</h5>
-                            <button class="btn btn-primary btn-xs" type="button">Model</button>
-                            <button class="btn btn-white btn-xs" type="button">Publishing</button>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="small text-right">
-                                <h5>Stats:</h5>
-                                <div><i class="fa fa-comments-o"> </i> 56 comments</div>
-                                <i class="fa fa-eye"> </i> 144 views
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <dl class="dl-horizontal">
+                            <dt>Descrição:</dt> <dd><?php echo($arrPosts[0]->getDescricaoSubcategoria()) ?></dd>
+                            <dt>Categoria:</dt> <dd><?php echo($arrPosts[0]->getNomeCategoria()) ?></dd>
+                            <dt>Data de criação:</dt> <dd><?php echo($arrPosts[0]->getDataCriacaoSubcategoria()) ?></dd>
+                            <dt>Postagens:</dt> <dd><?php echo(count($arrPosts)) ?></dd>
+                        </dl>
                     </div>
                 </div>
             </div>
-            <!-- eng ibox content -->
+
+            <h2>Postagens</h2>
+            <hr>
             <?php
-        }
-        ?>
+            foreach ($arrPosts as $arrPost) {
+                echo($this->partial('cookbook/index/post-partial', ['arrPost' => $arrPost]));
+            }
+            ?>
+        </div>
     </div>
-
-
-</div>
 </div>
 <!-- end pagina-->
+<!-- eng ibox content -->
+<script defer src="<?php echo($this->basePath('js/plugins/codemirror/codemirror.js')); ?>"></script>
+<script defer src="<?php echo($this->basePath('js/plugins/codemirror/mode/javascript/javascript.js')); ?>"></script>
+<script defer src="<?php echo($this->basePath('js/codeeditor.js')); ?>"></script>

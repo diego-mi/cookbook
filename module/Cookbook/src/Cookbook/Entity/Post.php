@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Post
  *
- * @ORM\Table(name="post", uniqueConstraints={@ORM\UniqueConstraint(name="descricao", columns={"descricao"})}, indexes={@ORM\Index(name="subcategoria_id", columns={"subcategoria_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
+ * @ORM\Table(name="post", uniqueConstraints={@ORM\UniqueConstraint(name="titulo", columns={"titulo"})}, indexes={@ORM\Index(name="subcategoria_id", columns={"subcategoria_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Cookbook\Repository\PostRepository")
  */
@@ -25,9 +25,9 @@ class Post extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=100, nullable=false)
+     * @ORM\Column(name="titulo", type="string", length=100, nullable=false)
      */
-    private $descricao;
+    private $titulo;
 
     /**
      * @var string
@@ -41,7 +41,14 @@ class Post extends AbstractEntity
      *
      * @ORM\Column(name="data_criacao", type="datetime", nullable=false)
      */
-    private $dataCriacao = 'CURRENT_TIMESTAMP';
+    private $dataCriacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="text", nullable=false)
+     */
+    private $codigo;
 
     /**
      * @var User
@@ -86,19 +93,19 @@ class Post extends AbstractEntity
     /**
      * @return string
      */
-    public function getDescricao()
+    public function getTitulo()
     {
-        return $this->descricao;
+        return $this->titulo;
     }
 
     /**
-     * @param string $descricao
+     * @param string $titulo
      *
      * @return Post
      */
-    public function setDescricao($descricao)
+    public function setTitulo($titulo)
     {
-        $this->descricao = $descricao;
+        $this->titulo = $titulo;
 
         return $this;
     }
@@ -128,7 +135,11 @@ class Post extends AbstractEntity
      */
     public function getDataCriacao()
     {
-        return $this->dataCriacao;
+        if (is_string($this->dataCriacao)) {
+            return $this->dataCriacao;
+        }
+
+        return $this->dataCriacao->format('d/m/Y h:i:s');
     }
 
     /**
@@ -139,6 +150,27 @@ class Post extends AbstractEntity
     public function setDataCriacao($dataCriacao)
     {
         $this->dataCriacao = $dataCriacao;
+
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * @param string $codigo
+     *
+     * @return Post
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
 
         return $this;
     }

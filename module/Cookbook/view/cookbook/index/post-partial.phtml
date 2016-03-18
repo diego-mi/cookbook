@@ -1,0 +1,35 @@
+<article class="post">
+    <a href="<?php echo $this->url('cookbook', array('action' => 'post', 'id' => $this->arrPost->getIdPost())); ?>"
+       class="btn-link">
+        <h3><?php echo($this->arrPost->getTituloPost()) ?></h3>
+    </a>
+    <div class="small m-b-xs">
+        <strong><?php echo($this->arrPost->getNomeUser()) ?></strong> <span class="text-muted"><i
+                class="fa fa-clock-o"></i> <?php echo($this->arrPost->getDataCriacaoPost()); ?></span>
+    </div>
+    <p>
+        <?php echo($this->arrPost->getConteudoPost()) ?>
+    </p>
+    <?php
+    if ($this->arrPost->getCodigoPost() != '') {
+        ?>
+        <textarea class="codeEditorPostList"
+                  id="codeEditorPostList-<?php echo($this->arrPost->getIdPost()) ?>"><?php echo($this->arrPost->getCodigoPost()); ?></textarea>
+        <?php
+    }
+    ?>
+    <div class="row post-social">
+        <div class="col-md-6">
+            <h5>Tags:</h5>
+            <button class="btn btn-primary btn-xs" type="button">Model</button>
+            <button class="btn btn-white btn-xs" type="button">Publishing</button>
+        </div>
+        <div class="col-md-6">
+            <div class="small text-right">
+                <h5>Stats:</h5>
+                <div><i class="fa fa-comments-o"> </i> 56 comments</div>
+                <i class="fa fa-eye"> </i> 144 views
+            </div>
+        </div>
+    </div>
+</article>

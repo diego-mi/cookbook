@@ -15,6 +15,7 @@
         'href' => $this->basePath() . '/img/favicon.ico'
     ))
         ->prependStylesheet($this->basePath() . '/css/main.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/codemirror/codemirror.css')
         ->prependStylesheet($this->basePath() . '/css/plugins/dataTables/dataTables.tableTools.min.css')
         ->prependStylesheet($this->basePath() . '/css/plugins/dataTables/dataTables.responsive.css')
         ->prependStylesheet($this->basePath() . '/css/plugins/dataTables/dataTables.bootstrap.css')
@@ -147,8 +148,31 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#">Postagem <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level collapse">
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'post', 'action' => 'index')); ?>">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'post', 'action' => 'adicionar')); ?>">Criar</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+            <!-- gerador -->
+                <li class="">
+                    <a href="#">
+                        <i class="fa fa-sitemap"></i> <span class="nav-label">Gerador </span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="">
+                            <a href="<?php echo $this->url('gerador', array('action' => 'index')); ?>">Escolher posts <span class="fa arrow"></span></a>
+                        </li>
+                    </ul>
+                </li>
+            <!-- gerador -->
             </ul>
 
         </div>

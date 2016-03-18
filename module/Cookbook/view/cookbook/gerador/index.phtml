@@ -1,0 +1,49 @@
+<!-- begin Breadcrumb-->
+<?php echo($this->partial('cookbook/index/breadcrumb-partial', ['arrBreadcrumb' => $arrBreadcrumb])); ?>
+<!-- begin Breadcrumb-->
+
+<!-- begin pagina-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <!-- begin content -->
+        <div class="ibox-content col-lg-12">
+
+            <!-- begin header post-->
+            <div class="m-b-md">
+                <h1>Gerar <small>código</small></h1>
+            </div>
+
+            <!-- conteudo -->
+            <?php
+            echo $this->flashMessenger()->renderCurrent('error',   array('alert', 'alert-dismissible', 'alert-danger'));
+            echo $this->flashMessenger()->renderCurrent('info',    array('alert', 'alert-dismissible', 'alert-info'));
+            echo $this->flashMessenger()->renderCurrent('default', array('alert', 'alert-dismissible', 'alert-warning'));
+            echo $this->flashMessenger()->renderCurrent('success', array('alert', 'alert-dismissible', 'alert-success'));
+            echo $this->form()->openTag($this->form);
+            foreach ($this->form as $element) { ?>
+                <div class="form-group">
+                    <?php
+                    if (($element->getAttribute('type') != 'submit') && ($element->getAttribute('type') != 'hidden')) {
+                        echo('<label class="col-sm-2 control-label" for="' . $element->getAttribute('id') . '">' . $element->getLabel() . '</label>');
+                        echo('<div class="col-sm-10">');
+                        echo($this->formElement($element));
+                        echo($this->formElementErrors($element));
+                        echo('</div>');
+                    } elseif ($element->getAttribute('type') == 'hidden') {
+                        echo($this->formElement($element));
+                    } else {
+                        echo('<div class="col-sm-10 col-lg-offset-2">');
+                        echo($this->formElement($element));
+                        echo('</div>');
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            echo $this->form()->closeTag();
+            ?>
+            <!-- conteudo -->
+        </div>
+    </div>
+</div>
+<!-- end pagina-->

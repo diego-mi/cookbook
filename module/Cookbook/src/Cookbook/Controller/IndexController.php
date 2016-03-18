@@ -14,6 +14,15 @@ use Zend\View\Model\ViewModel;
 class IndexController extends AbstractController
 {
     /**
+     * IndexController constructor.
+     */
+    public function __construct()
+    {
+        $this->strControllerName = 'index';
+        $this->strRoute = 'cookbook';
+    }
+
+    /**
      * Tela de boas vindas da documentacao
      *
      * @return ViewModel
@@ -31,15 +40,32 @@ class IndexController extends AbstractController
         if (!count($arrPost)) {
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
+
         $arrBreadcrumb = [
-            'titulo' => $arrPost->getNomeSubcategoria(),
-            'nomeTipo' => $arrPost->getNomeTipo(),
-            'idTipo' => $arrPost->getidTipo(),
-            'nomeCategoria' => $arrPost->getNomeCategoria(),
-            'idCategoria' => $arrPost->getidCategoria(),
-            'nomeSubcategoria' => $arrPost->getNomeSubcategoria(),
-            'idSubcategoria' => $arrPost->getidSubcategoria()
+            'tituloPagina' => $arrPost->getTituloPost(),
+            'segmentos' => [
+                [
+                    'link' => true,
+                    'text' => $arrPost->getNomeTipo(),
+                    'route' => $this->strRoute,
+                    'action' => 'tipo',
+                    'id' => $arrPost->getIdTipo()
+                ], [
+                    'link' => true,
+                    'text' => $arrPost->getNomeCategoria(),
+                    'route' => $this->strRoute,
+                    'action' => 'categoria',
+                    'id' => $arrPost->getIdCategoria()
+                ], [
+                    'link' => true,
+                    'text' => $arrPost->getNomeSubcategoria(),
+                    'route' => $this->strRoute,
+                    'action' => 'subcategoria',
+                    'id' => $arrPost->getIdSubcategoria()
+                ]
+            ]
         ];
+
         return new ViewModel(compact('arrPost', 'arrBreadcrumb'));
     }
 
@@ -51,15 +77,32 @@ class IndexController extends AbstractController
         if (!count($arrPosts)) {
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
+
         $arrBreadcrumb = [
-            'titulo' => $arrPosts[0]->getNomeSubcategoria(),
-            'nomeTipo' => $arrPosts[0]->getNomeTipo(),
-            'idTipo' => $arrPosts[0]->getIdTipo(),
-            'nomeCategoria' => $arrPosts[0]->getNomeCategoria(),
-            'idCategoria' => $arrPosts[0]->getIdCategoria(),
-            'nomeSubcategoria' => $arrPosts[0]->getNomeSubcategoria(),
-            'idSubcategoria' => $arrPosts[0]->getIdSubcategoria()
+            'tituloPagina' => $arrPosts[0]->getNomeSubcategoria(),
+            'segmentos' => [
+                [
+                    'link' => true,
+                    'text' => $arrPosts[0]->getNomeTipo(),
+                    'route' => $this->strRoute,
+                    'action' => 'tipo',
+                    'id' => $arrPosts[0]->getIdTipo()
+                ], [
+                    'link' => true,
+                    'text' => $arrPosts[0]->getNomeCategoria(),
+                    'route' => $this->strRoute,
+                    'action' => 'categoria',
+                    'id' => $arrPosts[0]->getIdCategoria()
+                ], [
+                    'link' => true,
+                    'text' => $arrPosts[0]->getNomeSubcategoria(),
+                    'route' => $this->strRoute,
+                    'action' => 'subcategoria',
+                    'id' => $arrPosts[0]->getIdSubcategoria()
+                ]
+            ]
         ];
+
         return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
     }
 
@@ -71,12 +114,27 @@ class IndexController extends AbstractController
         if (!count($arrPosts)) {
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
+
         $arrBreadcrumb = [
-            'titulo' => $arrPosts[0]->getNomeSubcategoria(),
-            'nomeTipo' => $arrPosts[0]->getNomeTipo(),
-            'idTipo' => $arrPosts[0]->getidTipo(),
-            'nomeCategoria' => $arrPosts[0]->getNomeCategoria(),
-            'idCategoria' => $arrPosts[0]->getidCategoria()
+            'tituloPagina' => $arrPosts[0]->getNomeCategoria(),
+            'segmentos' => [
+                [
+                    'link' => true,
+                    'text' => $arrPosts[0]->getNomeTipo(),
+                    'route' => $this->strRoute,
+                    'action' => 'tipo',
+                    'id' => $arrPosts[0]->getIdTipo()
+                ], [
+                    'link' => true,
+                    'text' => $arrPosts[0]->getNomeCategoria(),
+                    'route' => $this->strRoute,
+                    'action' => 'categoria',
+                    'id' => $arrPosts[0]->getIdCategoria()
+                ], [
+                    'link' => false,
+                    'text' => 'Listando todos em ' . $arrPosts[0]->getNomeCategoria()
+                ],
+            ]
         ];
         return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
     }
@@ -89,10 +147,21 @@ class IndexController extends AbstractController
         if (!count($arrPosts)) {
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
+
         $arrBreadcrumb = [
-            'titulo' => $arrPosts[0]->getNomeSubcategoria(),
-            'nomeTipo' => $arrPosts[0]->getNomeTipo(),
-            'idTipo' => $arrPosts[0]->getidTipo(),
+            'tituloPagina' => $arrPosts[0]->getNomeTipo(),
+            'segmentos' => [
+                [
+                    'link' => true,
+                    'text' => $arrPosts[0]->getNomeTipo(),
+                    'route' => $this->strRoute,
+                    'action' => 'tipo',
+                    'id' => $arrPosts[0]->getIdTipo()
+                ], [
+                    'link' => false,
+                    'text' => 'Listando todos em ' . $arrPosts[0]->getNomeTipo()
+                ],
+            ]
         ];
         return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
     }
