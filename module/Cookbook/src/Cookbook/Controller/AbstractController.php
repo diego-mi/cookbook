@@ -47,7 +47,7 @@ abstract class AbstractController extends AbstractActionController
      */
     public function getForm($strFormNamespace = null)
     {
-        return new $strFormNamespace;
+        return $this->getServiceLocator()->get($strFormNamespace);
     }
 
     public function adicionarAction()
@@ -69,6 +69,7 @@ abstract class AbstractController extends AbstractActionController
                         );
                     }
                 } catch (\Exception $objException) {
+                    var_dump($objException->getMessage());
                     $mixError = $objException->getMessage();
                     if (strpos($mixError, '23000')) {
                         $this->flashMessenger()->addErrorMessage($this->strMsgEUniqueKey);

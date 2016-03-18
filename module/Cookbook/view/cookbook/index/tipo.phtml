@@ -1,10 +1,10 @@
 <!-- begin Breadcrumb-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2><?php echo($this->arrBreadcrumb['descricaoTipo']); ?></h2>
+        <h2><?php echo($this->arrBreadcrumb['nomeTipo']); ?></h2>
         <ol class="breadcrumb">
             <li>
-                Listando tudo de <strong><?php echo($this->arrBreadcrumb['descricaoTipo']); ?></strong>
+                Listando tudo de <strong><?php echo($this->arrBreadcrumb['nomeTipo']); ?></strong>
             </li>
         </ol>
     </div>
@@ -22,8 +22,8 @@
 
             <!-- begin header post-->
             <div class="m-b-md">
-                <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
-                <h2><?php echo($arrPosts[0]->getDescricaoCategoria()) ?></h2>
+                <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'visualizar', 'id' => $arrPosts[0]->getIdTipo())); ?>" class="btn btn-white btn-xs pull-right">Editar Tipo</a>
+                <h2><?php echo($arrPosts[0]->getNomeCategoria()) ?></h2>
             </div>
             <!-- end pagina-->
         </div>
@@ -40,14 +40,14 @@
                 <div class="ibox-content">
                     <a href="article.html" class="btn-link">
                         <h2>
-                            <?php echo($arrPost->getDescricao()) ?>
+                            <?php echo($arrPost->getTituloPost()) ?>
                         </h2>
                     </a>
                     <div class="small m-b-xs">
-                        <strong><?php echo($arrPosts[0]->getNomeUser()) ?></strong> <span class="text-muted"><i class="fa fa-clock-o"></i> <?php echo($arrPost->getDataCriacao()); ?></span>
+                        <strong><?php echo($arrPosts[0]->getNomeUser()) ?></strong> <span class="text-muted"><i class="fa fa-clock-o"></i> <?php echo($arrPost->getDataCriacaoPost()); ?></span>
                     </div>
                     <p>
-                        <?php echo($arrPost->getConteudo()) ?>
+                        <?php echo($arrPost->getConteudoPost()) ?>
                     </p>
                     <div class="row">
                         <div class="col-md-6">

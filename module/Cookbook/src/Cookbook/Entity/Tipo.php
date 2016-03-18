@@ -25,6 +25,13 @@ class Tipo extends AbstractEntity
     /**
      * @var string
      *
+     * @ORM\Column(name="nome", type="string", nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descricao", type="string", length=100, nullable=false)
      */
     private $descricao;
@@ -52,6 +59,26 @@ class Tipo extends AbstractEntity
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     *
+     * @return Tipo
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
 
         return $this;
     }

@@ -1,21 +1,21 @@
 <!-- begin Breadcrumb-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2><?php echo($this->arrPost->getDescricaoCategoria()); ?></h2>
+        <h2><?php echo($this->arrPost->getNomeCategoria()); ?></h2>
         <ol class="breadcrumb">
             <li>
                 <a href="<?php echo $this->url('cookbook', array('action' => 'tipo', 'id' => $this->arrBreadcrumb['idTipo'])); ?>">
-                    <?php echo($this->arrBreadcrumb['descricaoTipo']); ?>
+                    <?php echo($this->arrBreadcrumb['nomeTipo']); ?>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $this->url('cookbook', array('action' => 'categoria', 'id' => $this->arrBreadcrumb['idCategoria'])); ?>">
-                    <?php echo($this->arrBreadcrumb['descricaoCategoria']); ?>
+                    <?php echo($this->arrBreadcrumb['nomeCategoria']); ?>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $this->url('cookbook', array('action' => 'subcategoria', 'id' => $this->arrBreadcrumb['idSubcategoria'])); ?>">
-                    <?php echo($this->arrBreadcrumb['descricaoSubcategoria']); ?>
+                    <?php echo($this->arrBreadcrumb['nomeSubcategoria']); ?>
                 </a>
             </li>
         </ol>
@@ -35,7 +35,7 @@
             <!-- begin header post-->
             <div class="m-b-md">
                 <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
-                <h2><?php echo($this->arrPost->getDescricaoCategoria()) ?></h2>
+                <h2><?php echo($this->arrPost->getNomeCategoria()) ?></h2>
             </div>
             <!-- end pagina-->
         </div>
@@ -48,7 +48,7 @@
             <div class="ibox-content">
                 <a href="article.html" class="btn-link">
                     <h2>
-                        <?php echo($this->arrPost->getDescricao()) ?>
+                        <?php echo($this->arrPost->getTituloPost()) ?>
                     </h2>
                 </a>
                 <div class="small m-b-xs">

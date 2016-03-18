@@ -2,9 +2,11 @@
 namespace Cookbook;
 
 use Cookbook\Service\Categoria;
+use Cookbook\Form\Categoria as CategoriaForm;
 use Cookbook\Service\Cookbook;
 use Cookbook\Service\Subcategoria;
 use Cookbook\Service\Tipo;
+use Cookbook\Form\Tipo as TipoForm;
 use Cookbook\Service\VwTipo;
 use Cookbook\Service\VwPost;
 use Cookbook\Service\ServiceLocatorFactory;
@@ -65,6 +67,12 @@ class Module
                 },
                 'Cookbook\Service\Subcategoria' => function ($em) {
                     return new Subcategoria($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Form\Categoria' => function ($em) {
+                    return new CategoriaForm($em->get('Doctrine\ORM\EntityManager'));
+                },
+                'Cookbook\Form\Tipo' => function ($em) {
+                    return new TipoForm($em->get('Doctrine\ORM\EntityManager'));
                 }
             )
         );

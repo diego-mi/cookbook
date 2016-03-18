@@ -1,7 +1,7 @@
 <!-- begin Breadcrumb-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Tipos</h2>
+        <h2>Categorias</h2>
         <ol class="breadcrumb">
             <li>
                 Listando todos
@@ -22,9 +22,9 @@
 
             <!-- begin header post-->
             <div class="m-b-md">
-                <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'adicionar')); ?>"
+                <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'adicionar')); ?>"
                    class="btn btn-white btn-xs pull-right">Adicionar</a>
-                <h2>Tipo
+                <h2>Categorias
                     <small>Listando todos</small>
                 </h2>
             </div>
@@ -50,6 +50,7 @@
                         <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Tipo</th>
                             <th>Nome</th>
                             <th>Data Criação</th>
                             <th>Ações</th>
@@ -63,16 +64,17 @@
                             ?>
                             <tr>
                                 <td><?php echo($arrEntity->getId()); ?></td>
+                                <td><?php echo($arrEntity->getTipo()->getNome()); ?></td>
                                 <td><?php echo($arrEntity->getNome()); ?></td>
                                 <td><?php echo($arrEntity->getDataCriacao()); ?></td>
                                 <td>
-                                    <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'visualizar', 'id' => $arrEntity->getId())); ?>">
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'visualizar', 'id' => $arrEntity->getId())); ?>">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'editar', 'id' => $arrEntity->getId())); ?>">
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'editar', 'id' => $arrEntity->getId())); ?>">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
-                                    <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'deletar', 'id' => $arrEntity->getId())); ?>">
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'deletar', 'id' => $arrEntity->getId())); ?>">
                                         <i class="fa fa-trash-o text-navy"></i>
                                     </a>
                                 </td>

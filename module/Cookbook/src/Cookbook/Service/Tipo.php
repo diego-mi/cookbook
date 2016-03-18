@@ -64,4 +64,15 @@ class Tipo extends AbstractService
 
         return $arrSubategoriaMenu;
     }
+
+    public function fetchPairs()
+    {
+        $arrTipos = $this->getRepository()->fetchPairs();
+        $arrPairs = [];
+
+        foreach ($arrTipos as $arrTipo) {
+            $arrPairs[$arrTipo['id']] = $arrTipo['nome'];
+        }
+        return $arrPairs;
+    }
 }

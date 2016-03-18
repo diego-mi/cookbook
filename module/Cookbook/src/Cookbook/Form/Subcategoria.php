@@ -3,7 +3,7 @@ namespace Cookbook\Form;
 
 use Zend\Form\Form;
 
-class Tipo extends Form
+class Subcategoria extends Form
 {
 
     public function __construct()

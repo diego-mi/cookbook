@@ -32,12 +32,12 @@ class IndexController extends AbstractController
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
         $arrBreadcrumb = [
-            'titulo' => $arrPost->getDescricaoSubcategoria(),
-            'descricaoTipo' => $arrPost->getDescricaoTipo(),
+            'titulo' => $arrPost->getNomeSubcategoria(),
+            'nomeTipo' => $arrPost->getNomeTipo(),
             'idTipo' => $arrPost->getidTipo(),
-            'descricaoCategoria' => $arrPost->getDescricaoCategoria(),
+            'nomeCategoria' => $arrPost->getNomeCategoria(),
             'idCategoria' => $arrPost->getidCategoria(),
-            'descricaoSubcategoria' => $arrPost->getDescricaoSubcategoria(),
+            'nomeSubcategoria' => $arrPost->getNomeSubcategoria(),
             'idSubcategoria' => $arrPost->getidSubcategoria()
         ];
         return new ViewModel(compact('arrPost', 'arrBreadcrumb'));
@@ -52,13 +52,13 @@ class IndexController extends AbstractController
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
         $arrBreadcrumb = [
-            'titulo' => $arrPosts[0]->getDescricaoSubcategoria(),
-            'descricaoTipo' => $arrPosts[0]->getDescricaoTipo(),
-            'idTipo' => $arrPosts[0]->getidTipo(),
-            'descricaoCategoria' => $arrPosts[0]->getDescricaoCategoria(),
-            'idCategoria' => $arrPosts[0]->getidCategoria(),
-            'descricaoSubcategoria' => $arrPosts[0]->getDescricaoSubcategoria(),
-            'idSubcategoria' => $arrPosts[0]->getidSubcategoria()
+            'titulo' => $arrPosts[0]->getNomeSubcategoria(),
+            'nomeTipo' => $arrPosts[0]->getNomeTipo(),
+            'idTipo' => $arrPosts[0]->getIdTipo(),
+            'nomeCategoria' => $arrPosts[0]->getNomeCategoria(),
+            'idCategoria' => $arrPosts[0]->getIdCategoria(),
+            'nomeSubcategoria' => $arrPosts[0]->getNomeSubcategoria(),
+            'idSubcategoria' => $arrPosts[0]->getIdSubcategoria()
         ];
         return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
     }
@@ -72,10 +72,10 @@ class IndexController extends AbstractController
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
         $arrBreadcrumb = [
-            'titulo' => $arrPosts[0]->getDescricaoSubcategoria(),
-            'descricaoTipo' => $arrPosts[0]->getDescricaoTipo(),
+            'titulo' => $arrPosts[0]->getNomeSubcategoria(),
+            'nomeTipo' => $arrPosts[0]->getNomeTipo(),
             'idTipo' => $arrPosts[0]->getidTipo(),
-            'descricaoCategoria' => $arrPosts[0]->getDescricaoCategoria(),
+            'nomeCategoria' => $arrPosts[0]->getNomeCategoria(),
             'idCategoria' => $arrPosts[0]->getidCategoria()
         ];
         return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
@@ -90,8 +90,8 @@ class IndexController extends AbstractController
             return $this->redirect()->toRoute('cookbook', ['action' => 'ops']);
         }
         $arrBreadcrumb = [
-            'titulo' => $arrPosts[0]->getDescricaoSubcategoria(),
-            'descricaoTipo' => $arrPosts[0]->getDescricaoTipo(),
+            'titulo' => $arrPosts[0]->getNomeSubcategoria(),
+            'nomeTipo' => $arrPosts[0]->getNomeTipo(),
             'idTipo' => $arrPosts[0]->getidTipo(),
         ];
         return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));

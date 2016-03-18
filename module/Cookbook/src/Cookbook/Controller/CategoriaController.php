@@ -21,7 +21,7 @@ class CategoriaController extends AbstractController
     }
 
     /**
-     * Tela de boas vindas da documentacao
+     * Tela inicial de categoria listando todas
      *
      * @return ViewModel
      */
@@ -32,6 +32,11 @@ class CategoriaController extends AbstractController
         return new ViewModel(compact('arrEntitys'));
     }
 
+    /**
+     * Metodo responsavel por carregar a visualizacao de categoria
+     *
+     * @return ViewModel
+     */
     public function visualizarAction()
     {
         $service = $this->getService('Cookbook\Service\VwCategoria');

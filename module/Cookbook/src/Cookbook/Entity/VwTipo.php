@@ -25,6 +25,13 @@ class VwTipo extends AbstractEntity
     /**
      * @var string
      *
+     * @ORM\Column(name="nome_tipo", type="string", length=100, nullable=false)
+     */
+    private $nomeTipo;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descricao_tipo", type="string", length=100, nullable=false)
      */
     private $descricaoTipo;
@@ -39,9 +46,9 @@ class VwTipo extends AbstractEntity
     /**
      * @var integer
      *
-     * @ORM\Column(name="quantidade_categoria", type="integer", length=100, nullable=false)
+     * @ORM\Column(name="qt_categoria", type="integer", length=100, nullable=false)
      */
-    private $quantidadeCategoria;
+    private $qtCategoria;
 
     /**
      * @return int
@@ -66,13 +73,33 @@ class VwTipo extends AbstractEntity
     /**
      * @return string
      */
+    public function getNomeTipo()
+    {
+        return $this->nomeTipo;
+    }
+
+    /**
+     * @param string $nome
+     *
+     * @return Tipo
+     */
+    public function setNome($nomeTipo)
+    {
+        $this->nomeTipo = $nomeTipo;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getDescricaoTipo()
     {
         return $this->descricaoTipo;
     }
 
     /**
-     * @param string $descricao
+     * @param string $descricaoTipo
      *
      * @return Tipo
      */
@@ -110,18 +137,18 @@ class VwTipo extends AbstractEntity
     /**
      * @return int
      */
-    public function getQuantidadeCategoria()
+    public function getQtCategoria()
     {
-        return $this->quantidadeCategoria;
+        return $this->qtCategoria;
     }
 
     /**
-     * @param int $quantidadeCategoria
+     * @param int $qtCategoria
      * @return Tipo
      */
-    public function setQuantidadeCategoria($quantidadeCategoria)
+    public function setQtCategoria($qtCategoria)
     {
-        $this->quantidadeCategoria = $quantidadeCategoria;
+        $this->qtCategoria = $qtCategoria;
 
         return $this;
     }

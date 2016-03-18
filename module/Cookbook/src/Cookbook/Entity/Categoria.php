@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="categoria", uniqueConstraints={@ORM\UniqueConstraint(name="descricao", columns={"descricao"})}, indexes={@ORM\Index(name="tipo_id", columns={"tipo_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="Cookbook\Repository\CategoriaRepository")
  */
 class Categoria extends AbstractEntity
@@ -21,6 +22,13 @@ class Categoria extends AbstractEntity
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", nullable=false)
+     */
+    private $nome;
 
     /**
      * @var string
@@ -62,6 +70,26 @@ class Categoria extends AbstractEntity
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     *
+     * @return Categoria
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
 
         return $this;
     }

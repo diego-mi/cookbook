@@ -25,6 +25,13 @@ class Subcategoria extends AbstractEntity
     /**
      * @var string
      *
+     * @ORM\Column(name="nome", type="string", nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descricao", type="string", length=100, nullable=false)
      */
     private $descricao;
@@ -62,6 +69,26 @@ class Subcategoria extends AbstractEntity
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     *
+     * @return Subcategoria
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
 
         return $this;
     }

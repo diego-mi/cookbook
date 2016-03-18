@@ -9,4 +9,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class TipoRepository extends EntityRepository
 {
+    public function fetchPairs()
+    {
+        $strAlias = 'tipo';
+
+        $queryBuilder = $this->createQueryBuilder($strAlias);
+        $queryBuilder->select([
+            "{$strAlias}.id",
+            "{$strAlias}.nome",
+        ]);
+
+        return $queryBuilder->getQuery()->getScalarResult();
+    }
 }

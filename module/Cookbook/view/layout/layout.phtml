@@ -68,7 +68,7 @@
                     <li>
                         <a href="#">
                             <i class="fa fa-sitemap"></i> <span
-                                class="nav-label"><?php echo($menu['infos']['descricao']) ?> </span><span
+                                class="nav-label"><?php echo($menu['infos']['nome']) ?> </span><span
                                 class="fa arrow"></span>
                         </a>
                         <?php
@@ -78,7 +78,7 @@
                                 foreach ($menu['arrCategoria'] as $categoria) {
                                     ?>
                                     <li>
-                                        <a href="#"><?php echo($categoria['infos']['descricao']) ?> <span
+                                        <a href="<?php echo $this->url('cookbook', array('controller' => 'index', 'action' => 'categoria', 'id' => $categoria['infos']['id'])); ?>"><?php echo($categoria['infos']['nome']) ?> <span
                                                 class="fa arrow"></span></a>
                                         <?php
                                         if (count($categoria['arrSubcategoria'])) {
@@ -87,7 +87,7 @@
                                                 foreach ($categoria['arrSubcategoria'] as $subcategoria) {
                                                     ?>
                                                     <li>
-                                                        <a href="#"><?php echo($subcategoria['infos']['descricao']) ?></a>
+                                                        <a href="<?php echo $this->url('cookbook', array('controller' => 'index', 'action' => 'subcategoria', 'id' => $subcategoria['infos']['id'])); ?>"><?php echo($subcategoria['infos']['nome']) ?></a>
                                                     </li>
                                                     <?php
                                                 }
@@ -109,7 +109,46 @@
                 }
 
                 ?>
-
+                <li class="">
+                    <a href="#">
+                        <i class="fa fa-sitemap"></i> <span class="nav-label">Criar </span><span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="">
+                            <a href="#">Tipos <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level collapse">
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'index')); ?>">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'tipo', 'action' => 'adicionar')); ?>">Criar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#">Categorias <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level collapse">
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'index')); ?>">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'adicionar')); ?>">Criar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Subcategorias <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level collapse">
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'subcategoria', 'action' => 'index')); ?>">Listar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $this->url('criar', array('controller' => 'subcategoria', 'action' => 'adicionar')); ?>">Criar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
 
         </div>

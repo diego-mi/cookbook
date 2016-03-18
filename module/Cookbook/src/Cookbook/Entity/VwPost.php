@@ -25,23 +25,23 @@ class VwPost extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=100, nullable=false)
+     * @ORM\Column(name="titulo_post", type="string", length=100, nullable=false)
      */
-    private $descricao;
+    private $tituloPost;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="conteudo", type="text", nullable=false)
+     * @ORM\Column(name="conteudo_post", type="text", nullable=false)
      */
-    private $conteudo;
+    private $conteudoPost;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="data_criacao", type="datetime", nullable=false)
+     * @ORM\Column(name="data_criacao_post", type="datetime", nullable=false)
      */
-    private $dataCriacao;
+    private $dataCriacaoPost;
 
     /**
      * @var integer
@@ -67,9 +67,9 @@ class VwPost extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao_subcategoria", type="string", length=100, nullable=false)
+     * @ORM\Column(name="nome_subcategoria", type="string", length=100, nullable=false)
      */
-    private $descricaoSubcategoria;
+    private $nomeSubcategoria;
 
     /**
      * @var integer
@@ -81,9 +81,9 @@ class VwPost extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao_categoria", type="string", length=100, nullable=false)
+     * @ORM\Column(name="nome_categoria", type="string", length=100, nullable=false)
      */
-    private $descricaoCategoria;
+    private $nomeCategoria;
 
     /**
      * @var integer
@@ -95,9 +95,9 @@ class VwPost extends AbstractEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao_tipo", type="string", length=100, nullable=false)
+     * @ORM\Column(name="nome_tipo", type="string", length=100, nullable=false)
      */
-    private $descricaoTipo;
+    private $nomeTipo;
 
     /**
      * @return int
@@ -122,19 +122,19 @@ class VwPost extends AbstractEntity
     /**
      * @return string
      */
-    public function getDescricao()
+    public function getTituloPost()
     {
-        return $this->descricao;
+        return $this->tituloPost;
     }
 
     /**
-     * @param string $descricao
+     * @param string $tituloPost
      *
      * @return VwPost
      */
-    public function setDescricao($descricao)
+    public function setTituloPost($tituloPost)
     {
-        $this->descricao = $descricao;
+        $this->tituloPost = $tituloPost;
 
         return $this;
     }
@@ -142,19 +142,19 @@ class VwPost extends AbstractEntity
     /**
      * @return string
      */
-    public function getConteudo()
+    public function getConteudoPost()
     {
-        return $this->conteudo;
+        return $this->conteudoPost;
     }
 
     /**
-     * @param string $conteudo
+     * @param string $conteudoPost
      *
      * @return VwPost
      */
-    public function setConteudo($conteudo)
+    public function setConteudoPost($conteudoPost)
     {
-        $this->conteudo = $conteudo;
+        $this->conteudoPost = $conteudoPost;
 
         return $this;
     }
@@ -162,19 +162,19 @@ class VwPost extends AbstractEntity
     /**
      * @return \DateTime
      */
-    public function getDataCriacao()
+    public function getDataCriacaoPost()
     {
-        return $this->dataCriacao->format('d/m/Y h:i:s');
+        return $this->dataCriacaoPost->format('d/m/Y h:i:s');
     }
 
     /**
-     * @param \DateTime $dataCriacao
+     * @param \DateTime $dataCriacaoPost
      *
      * @return VwPost
      */
-    public function setDataCriacao($dataCriacao)
+    public function setDataCriacaoPost($dataCriacaoPost)
     {
-        $this->dataCriacao = $dataCriacao;
+        $this->dataCriacaoPost = $dataCriacaoPost;
 
         return $this;
     }
@@ -242,19 +242,19 @@ class VwPost extends AbstractEntity
     /**
      * @return string
      */
-    public function getDescricaoSubcategoria()
+    public function getNomeSubcategoria()
     {
-        return $this->descricaoSubcategoria;
+        return $this->nomeSubcategoria;
     }
 
     /**
-     * @param string $descricaoSubcategoria
+     * @param string $nomeSubcategoria
      *
      * @return VwPost
      */
-    public function setDescricaoSubcategoria($descricaoSubcategoria)
+    public function setNomeSubcategoria($nomeSubcategoria)
     {
-        $this->descricaoSubcategoria = $descricaoSubcategoria;
+        $this->nomeSubcategoria = $nomeSubcategoria;
 
         return $this;
     }
@@ -282,19 +282,19 @@ class VwPost extends AbstractEntity
     /**
      * @return string
      */
-    public function getDescricaoCategoria()
+    public function getNomeCategoria()
     {
-        return $this->descricaoCategoria;
+        return $this->nomeCategoria;
     }
 
     /**
-     * @param string $descricaoCategoria
+     * @param string $nomeCategoria
      *
      * @return VwPost
      */
-    public function setDescricaoCategoria($descricaoCategoria)
+    public function setNomeCategoria($nomeCategoria)
     {
-        $this->descricaoCategoria = $descricaoCategoria;
+        $this->nomeCategoria = $nomeCategoria;
 
         return $this;
     }
@@ -322,19 +322,19 @@ class VwPost extends AbstractEntity
     /**
      * @return string
      */
-    public function getDescricaoTipo()
+    public function getNomeTipo()
     {
-        return $this->descricaoTipo;
+        return $this->nomeTipo;
     }
 
     /**
-     * @param string $descricaoTipo
+     * @param string $nomeTipo
      *
      * @return VwPost
      */
-    public function setDescricaoTipo($descricaoTipo)
+    public function setNomeTipo($nomeTipo)
     {
-        $this->descricaoTipo = $descricaoTipo;
+        $this->nomeTipo = $nomeTipo;
 
         return $this;
     }
