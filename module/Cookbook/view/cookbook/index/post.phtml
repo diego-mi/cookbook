@@ -12,6 +12,8 @@
             <div class="m-b-md">
                 <a href="<?php echo $this->url('criar', array('controller' => 'post', 'action' => 'editar', 'id' => $arrPost->getIdPost())); ?>"
                    class="btn btn-white btn-xs pull-right">Editar Post</a>
+                <a href="<?php echo $this->url('criar', array('controller' => 'post', 'action' => 'deletar', 'id' => $arrPost->getIdPost())); ?>"
+                   class="btn btn-white btn-xs pull-right">Deletar Post</a>
                 <h1><?php echo($arrPost->getTituloPost()) ?>
                     <small>Postagem</small>
                 </h1>

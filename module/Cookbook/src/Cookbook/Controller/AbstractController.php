@@ -11,12 +11,34 @@ use Zend\View\Model\ViewModel;
  */
 abstract class AbstractController extends AbstractActionController
 {
+    /**
+     * Traid para reuso de mensagens dentro do sistema
+     */
     use Message;
 
+    /**
+     * @var string $strControllerName Nome do controller
+     */
     protected $strControllerName;
+
+    /**
+     * @var string $strRoute Nome da rota
+     */
     protected $strRoute;
+
+    /**
+     * @var string $strServiceNamespace Namespace do Service do controller
+     */
     protected $strServiceNamespace;
+
+    /**
+     * @var string $strEntityNamespace Namespace da Entity do controller
+     */
     protected $strEntityNamespace;
+
+    /**
+     * @var string $strFormNamespace Namespace do Form Default do controller
+     */
     protected $strFormNamespace;
 
     /**
@@ -32,7 +54,13 @@ abstract class AbstractController extends AbstractActionController
     }
 
     /**
-     * Action responsavel por mostrar a pagina de 'ops'
+     * Metodo Responsavel por mostrar pagina de erro
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name opsAction
+     *
+     * @return ViewModel
      */
     public function opsAction()
     {
@@ -40,16 +68,30 @@ abstract class AbstractController extends AbstractActionController
     }
 
     /**
-     * Funcao responsavel por inicializar um form
+     * Metodo Responsavel por recuperar um formulario
      *
-     * @param String|null $strFormNamespace
-     * @return mixed
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name getForm
+     *
+     * @param string|null $strFormNamespace
+     *
+     * @return array|object
      */
     public function getForm($strFormNamespace = null)
     {
         return $this->getServiceLocator()->get($strFormNamespace);
     }
 
+    /**
+     * Metodo Responsavel por carregar a view e adicionar um registro
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name adicionarAction
+     *
+     * @return \Zend\Http\Response|ViewModel
+     */
     public function adicionarAction()
     {
         $form = $this->getForm($this->strFormNamespace);
@@ -83,7 +125,15 @@ abstract class AbstractController extends AbstractActionController
         return new ViewModel(compact('form'));
     }
 
-
+    /**
+     * Metodo Responsavel por view de editar e editar um registro
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name editarAction
+     *
+     * @return \Zend\Http\Response|ViewModel
+     */
     public function editarAction()
     {
         $form = $this->getForm($this->strFormNamespace);
@@ -126,7 +176,11 @@ abstract class AbstractController extends AbstractActionController
     }
 
     /**
-     * Exclui um registro
+     * Metodo Responsavel por mostrar a view e deletar um registro
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name deletarAction
      *
      * @return \Zend\Http\Response
      */
@@ -136,9 +190,9 @@ abstract class AbstractController extends AbstractActionController
         $intIdFromRoute = $this->params()->fromRoute('id', 0);
 
         if ($service->deletar(array('id' => $intIdFromRoute))) {
-            $this->flashMessenger()->addSuccessMessage('Registro deletado com sucesso!');
+            $this->flashMessenger()->addSuccessMessage($this->strMsgSDeletado);
         } else {
-            $this->flashMessenger()->addErrorMessage('Não foi possivel deletar o registro!');
+            $this->flashMessenger()->addErrorMessage($this->strMsgSNaoDeletado);
         }
 
         return $this->redirect()->toRoute(

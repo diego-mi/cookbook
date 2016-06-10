@@ -11,55 +11,72 @@ class Tipo extends AbstractService
         parent::__construct($em);
     }
 
+    /**
+     * Metodo Responsavel por criar o menu principal
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name getMenu
+     *
+     * @return array
+     */
     public function getMenu()
     {
         $arrTipos = $this->findBy([]);
-
         $arrMenu = [];
-
-        for ($i = 0; $i <= count($arrTipos); $i++) {
-            if (!is_null($arrTipos[$i])) {
-                $arrTipo = $arrTipos[$i]->toArray();
-
-                $arrMenu[$i] = ['infos' => $arrTipo];
-                $arrMenu[$i]['arrCategoria'] = $this->getCategorias($arrTipo['id']);
-            }
+        $intCounter = 0;
+        foreach ($arrTipos as $tipo) {
+            $arrMenu[$intCounter] = ['infos' => $tipo->toArray()];
+            $arrMenu[$intCounter]['arrCategoria'] = $this->getCategorias($tipo->getId());
+            $intCounter++;
         }
 
         return $arrMenu;
     }
 
+    /**
+     * Metodo Responsavel por recuperar as categorias
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name getCategorias
+     *
+     * @param integer $intIdTipo
+     * @return array
+     */
     public function getCategorias($intIdTipo)
     {
-        #recupera o service
-        $serviceCategoria = $this->getService('Cookbook\Service\Categoria');
-        #recupera todas as categorias
-        $arrCategorias = $serviceCategoria->findBy(['tipo' => $intIdTipo]);
+        $arrCategorias = $this->getService('Cookbook\Service\Categoria')->findBy(['tipo' => $intIdTipo]);
         $arrCategoriaMenu = [];
-
-        for ($i = 0; $i <= count($arrCategorias); $i++) {
-            if (!is_null($arrCategorias[$i])) {
-                $arrCategoria = $arrCategorias[$i]->toArray();
-                $arrCategoriaMenu[$i] = ['infos' => $arrCategoria];
-                $arrCategoriaMenu[$i]['arrSubcategoria'] = $this->getSubcategorias($arrCategoria['id']);
-            }
+        $intCounter = 0;
+        foreach ($arrCategorias as $categoria) {
+            $arrCategoriaMenu[$intCounter] = ['infos' => $categoria->toArray()];
+            $arrCategoriaMenu[$intCounter]['arrSubcategoria'] = $this->getSubcategorias($categoria->getId());
+            $intCounter++;
         }
 
         return $arrCategoriaMenu;
     }
 
+    /**
+     * Metodo Responsavel por recuperar as subcategorias de uma categoria
+     *
+     * @author Diego Campos <diego.campos@cast.com.br>
+     * @since 31/05/2016
+     * @name getSubcategorias
+     *
+     * @param integer $intIdCategoria
+     *
+     * @return array
+     */
     public function getSubcategorias($intIdCategoria)
     {
-        #recupera o service
-        $serviceSubategoria = $this->getService('Cookbook\Service\Subcategoria');
-        #recupera todas as categorias
-        $arrSubcategorias = $serviceSubategoria->findBy(['categoria' => $intIdCategoria]);
+        $arrSubcategorias = $this->getService('Cookbook\Service\Subcategoria')->findBy(['categoria' => $intIdCategoria]);
         $arrSubategoriaMenu = [];
-        for ($i = 0; $i <= count($arrSubcategorias); $i++) {
-            if (!is_null($arrSubcategorias[$i])) {
-                $arrSubcategoria = $arrSubcategorias[$i]->toArray();
-                $arrSubategoriaMenu[$i] = ['infos' => $arrSubcategoria];
-            }
+        $intCounter = 0;
+        foreach ($arrSubcategorias as $subcategoria) {
+            $arrSubategoriaMenu[$intCounter] = ['infos' => $subcategoria->toArray()];
+            $intCounter++;
         }
 
         return $arrSubategoriaMenu;

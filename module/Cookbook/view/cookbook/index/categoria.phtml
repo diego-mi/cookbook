@@ -5,36 +5,104 @@
 <!-- begin pagina-->
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-        <!-- begin content -->
-        <div class="ibox-content col-lg-12">
 
-            <!-- begin header post-->
-            <div class="m-b-md">
-                <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'visualizar', 'id' => $arrPosts[0]->getIdCategoria())); ?>"
-                   class="btn btn-white btn-xs pull-right">Visualizar Categoria</a>
-                <h1><?php echo($arrPosts[0]->getNomeCategoria()) ?> <small>Categoria</small></h1>
+        <!--barra lateral-->
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content mailbox-content">
+                    <div class="file-manager">
+                        <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Criar</a>
+                        <div class="space-25"></div>
+                        <h5><?php echo($arrPosts[0]->getNomeSubcategoria()) ?></h5>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <dl class="dl-horizontal">
-                            <dt>Descrição:</dt> <dd><?php echo($arrPosts[0]->getDescricaoCategoria()) ?></dd>
-                            <dt>Tipo:</dt> <dd><?php echo($arrPosts[0]->getNomeTipo()) ?></dd>
-                            <dt>Data de criação:</dt> <dd><?php echo($arrPosts[0]->getDataCriacaoCategoria()) ?></dd>
-                            <dt>Postagens:</dt> <dd><?php echo(count($arrPosts)) ?></dd>
-                        </dl>
+                        <ul class="menu-lateral-corpo">
+                            <?php
+                            foreach ($this->arrMenu as $menu) {
+                                ?>
+                                <li>
+                                    <a href="#">
+                                        <span class="nav-label"><?php echo($menu['infos']['nome']) ?></span
+                                    </a>
+                                    <?php
+                                    if (count($menu['arrCategoria'])) {
+                                        ?>
+                                        <ul> <?php
+                                            foreach ($menu['arrCategoria'] as $categoria) {
+                                                ?>
+                                                <li>
+                                                    <a href="<?php echo $this->url('cookbook', array('controller' => 'index', 'action' => 'categoria', 'id' => $categoria['infos']['id'])); ?>"><?php echo($categoria['infos']['nome']) ?> </a>
+                                                    <?php
+                                                    if (count($categoria['arrSubcategoria'])) {
+                                                        ?>
+                                                        <ul> <?php
+                                                            foreach ($categoria['arrSubcategoria'] as $subcategoria) {
+                                                                ?>
+                                                                <li>
+                                                                    <a href="<?php echo $this->url('cookbook', array('controller' => 'index', 'action' => 'subcategoria', 'id' => $subcategoria['infos']['id'])); ?>"><?php echo($subcategoria['infos']['nome']) ?></a>
+                                                                </li>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </ul>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </li>
+                                                <?php
+                                            }
+                                            ?>
+                                        </ul>
+                                        <?php
+                                    }
+                                    ?>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
+
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
-
-            <h2>Postagens</h2>
-            <hr>
-            <?php
-            foreach ($arrPosts as $arrPost) {
-                echo($this->partial('cookbook/index/post-partial', ['arrPost' => $arrPost]));
-            }
-            ?>
-
         </div>
+        <!--barra lateral-->
+
+        <!-- begin content -->
+        <div class="col-lg-9">
+            <div class="ibox">
+                <div class="ibox-content">
+
+                    <!-- begin header post-->
+                    <div class="m-b-md">
+                        <a href="<?php echo $this->url('criar', array('controller' => 'categoria', 'action' => 'visualizar', 'id' => $arrPosts[0]->getIdCategoria())); ?>"
+                           class="btn btn-white btn-xs pull-right">Visualizar Categoria</a>
+                        <h1><?php echo($arrPosts[0]->getNomeCategoria()) ?> <small>Categoria</small></h1>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <dl class="dl-horizontal">
+                                    <dt>Descrição:</dt> <dd><?php echo($arrPosts[0]->getDescricaoCategoria()) ?></dd>
+                                    <dt>Tipo:</dt> <dd><?php echo($arrPosts[0]->getNomeTipo()) ?></dd>
+                                    <dt>Data de criação:</dt> <dd><?php echo($arrPosts[0]->getDataCriacaoCategoria()) ?></dd>
+                                    <dt>Postagens:</dt> <dd><?php echo(count($arrPosts)) ?></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Postagens</h2>
+                    <hr>
+                    <?php
+                    foreach ($arrPosts as $arrPost) {
+                        echo($this->partial('cookbook/index/post-partial', ['arrPost' => $arrPost]));
+                    }
+                    ?>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- end pagina-->

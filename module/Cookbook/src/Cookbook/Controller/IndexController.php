@@ -103,7 +103,10 @@ class IndexController extends AbstractController
             ]
         ];
 
-        return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
+        $myService = $this->getService('Cookbook\Service\Tipo');
+        $arrMenu = $myService->getMenu();
+
+        return new ViewModel(compact('arrPosts', 'arrBreadcrumb', 'arrMenu'));
     }
 
     public function categoriaAction()
@@ -136,7 +139,11 @@ class IndexController extends AbstractController
                 ],
             ]
         ];
-        return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
+
+        $myService = $this->getService('Cookbook\Service\Tipo');
+        $arrMenu = $myService->getMenu();
+
+        return new ViewModel(compact('arrPosts', 'arrBreadcrumb', 'arrMenu'));
     }
 
     public function tipoAction()
@@ -163,7 +170,11 @@ class IndexController extends AbstractController
                 ],
             ]
         ];
-        return new ViewModel(compact('arrPosts', 'arrBreadcrumb'));
+
+        $myService = $this->getService('Cookbook\Service\Tipo');
+        $arrMenu = $myService->getMenu();
+
+        return new ViewModel(compact('arrPosts', 'arrBreadcrumb', 'arrMenu'));
     }
 
 

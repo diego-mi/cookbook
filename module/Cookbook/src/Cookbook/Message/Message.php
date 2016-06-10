@@ -20,4 +20,16 @@ trait Message
      * @var string
      */
     protected $strMsgSEdicao = 'Edição realizada com sucesso.';
+
+    /**
+     * Mensagem utilizada quando realizar um delete com sucesso.
+     * @var string
+     */
+    protected $strMsgSDeletado = 'Registro deletado com sucesso!';
+
+    /**
+     * Mensagem utilizada quando realizar um delete com falha.
+     * @var string
+     */
+    protected $strMsgSNaoDeletado = 'Não foi possivel deletar o registro!';
 }
